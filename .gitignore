@@ -2,6 +2,11 @@
 .*
 !.gitignore
 
-*/.idea/*.*
-*/target/*/*
-*/build/*.*
+/*/.idea
+/*/target
+/*/build
+/build
+/target
+/.idea
+/out
+/*/out
