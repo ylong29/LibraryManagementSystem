@@ -24,28 +24,42 @@ import java.util.ArrayList;
  */
 public class IdCard implements Serializable{
     private int idNumber;
-    private ArrayList<Customer> customerList;
+    private ArrayList<Customer> customers;
     private static int numberOfCard = 0;
     public IdCard(String name,String password){
         numberOfCard++;
         this.idNumber = numberOfCard;
-        customerList = new ArrayList<>(4);
+        this.customers = new ArrayList<>(4);
     }
     public int getIdNumber(){
         return idNumber;
     }
-    public void addCustomer(Customer a){
-        customerList.add(a);
+
+    // Todo: You need to think about where to call these two functions
+    public boolean addCustomer(Customer customer){
+        if (this.customers.toArray().length < 4) {
+            customers.add(customer);
+            return true;
+        } else {
+            return false;
+        }
     }
-    public void removeCustomer(Customer a){
-        customerList.remove(a);
+
+    public boolean removeCustomer(Customer customer){
+        if (this.customers.contains(customer)) {
+            this.customers.remove(customer);
+            return true;
+        } else {
+            return false;
+        }
     }
+
     public void printList(){
-        for(Customer a:customerList){
+        for(Customer a:this.customers){
             System.out.println(a);
         }
     }
     public ArrayList<Customer> getCustomerList(){
-        return customerList;
+        return this.customers;
     }
 }
