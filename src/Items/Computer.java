@@ -5,20 +5,35 @@
  */
 package Items;
 
+import static Items.Book.validName;
+import User.Customer;
+import java.io.Serializable;
+import java.time.LocalDate;
+
 /**
  *
  * @author lenovo
  */
-public class Computer extends Item{
+public class Computer extends Item implements Serializable{
     private String comCode;
     private String color;
     private String system;
+     private Customer owner;
+    private LocalDate borrowDate = LocalDate.parse("1990-10-01");
+    private LocalDate returnDate = LocalDate.parse("1990-10-01");
+    private boolean available = false;
     public Computer(String idNumber,String comCode,String color,String system ){
         super(idNumber,"Computer");
         validCode(comCode);
         this.comCode = comCode;
         this.color = color;
         this.system = system;
+         borrowDate = LocalDate.parse("1990-10-01");
+        returnDate = LocalDate.parse("1990-10-01");
+        if(!returnDate.equals(LocalDate.parse("1990-10-01"))){
+            available = true;
+        }
+        owner = new Customer("School","Ok111","owner");
     }
     public Computer(String comCode,String color,String system){
         super("Computer");
@@ -26,6 +41,26 @@ public class Computer extends Item{
         this.comCode = comCode;
         this.color = color;
         this.system = system;
+        borrowDate = LocalDate.parse("1990-10-01");
+        returnDate = LocalDate.parse("1990-10-01");
+        if(!returnDate.equals(LocalDate.parse("1990-10-01"))){
+            available = true;
+        }
+        owner = new Customer("School","Ok111","owner");
+    }
+     public Computer(String comCode,String color,String system,String borrowDate, String returnDate, Customer owner){
+        super("Computer");
+        validCode(comCode);
+        this.comCode = comCode;
+        this.color = color;
+        this.system = system;
+        this.borrowDate = LocalDate.parse(borrowDate);
+        this.returnDate = LocalDate.parse(returnDate);
+        this.owner = owner;
+        if(!returnDate.equals(LocalDate.parse("1990-10-01"))){
+            available = true;
+        }
+       
     }
     public String getComCode(){
         return comCode;
@@ -36,8 +71,17 @@ public class Computer extends Item{
     public String getSystem(){
         return system;
     }
+    public String getBorrowDate(){
+        return borrowDate.toString();
+    }
+    public String getReturnDate(){
+        return returnDate.toString();
+    }
+    public Customer getOwner(){
+        return owner;
+    }
     public String toString(){
-        return super.toString()+" Computer Code: "+comCode+" System: "+system+" Color: "+color;
+        return super.toString()+" Computer Code: "+comCode+" System: "+system+" Color: "+color+" Borrow Date: "+borrowDate.toString()+" Return Date: "+returnDate.toString() + " Owner: "+owner.toString();
     }
      public boolean equals(Object obj) {
         if (this == obj) {

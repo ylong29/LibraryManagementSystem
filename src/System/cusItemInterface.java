@@ -77,7 +77,7 @@ public class cusItemInterface extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(204, 0, 255));
         jLabel4.setText("Date");
 
-        txtTitle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Book", "Umbrella", "Computer", "Seat" }));
+        txtTitle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Book", "Umbrella", "Computer" }));
         txtTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTitleActionPerformed(evt);

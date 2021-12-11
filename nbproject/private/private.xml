@@ -5,11 +5,15 @@
         <group>
             <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/CusBookInterface.java</file>
             <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/CusUmbrellaInterface.java</file>
-            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/UmbrellaInterface.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/DatabaseEventInterface.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/CustomerInterface.java</file>
             <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/Overdue.java</file>
-            <file>file:/D:/CPT105-Lab/ManagementSystem/src/Items/Umbrella.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/AdminInterface.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/CusDatabaseEventInterface.java</file>
             <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/cusItemInterface.java</file>
-            <file>file:/D:/CPT105-Lab/ManagementSystem/src/Items/Book.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/Events/Event.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/ItemInterface.java</file>
+            <file>file:/D:/CPT105-Lab/ManagementSystem/src/System/Login.java</file>
         </group>
     </open-files>
 </project-private>

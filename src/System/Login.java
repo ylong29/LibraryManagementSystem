@@ -182,6 +182,7 @@ public class Login extends javax.swing.JFrame {
 //        ArrayList<Admin> adminList  = new ArrayList<>();
 //        ArrayList<Customer> ctmList = new ArrayList<>();
         String getIdentity = null;
+        String title = null;
 //        readObjFromAdminFile(adminList,fileName2);
 //        readObjFromUserFile(ctmList,fileName1);
 //        for(Admin user: adminList){
@@ -214,6 +215,7 @@ public class Login extends javax.swing.JFrame {
         for(Admin user: adminList){
             if(user.getName().equals(userName)){
                 getAdminPassWord = user.getPassword();
+                title = user.getTitle();
             }
             System.out.println(user);
         }
@@ -225,19 +227,22 @@ public class Login extends javax.swing.JFrame {
             System.out.println(user);
         }
         if(passWord.equals(getAdminPassWord)){
-            
+             try {
+                    FileOutputStream fos=new FileOutputStream("LoginAdmin.txt",true);
+                    ObjectOutputStream oos=new ObjectOutputStream(fos);
+                    oos.writeObject(new Admin(userName,passWord,title));
+                    oos.close();
+                } 
+                catch (Exception e) {
+                    System.out.println(e.toString());
+                } 
             AdminInterface a = new AdminInterface();
             this.hide();
             a.setVisible(true);
             JOptionPane.showMessageDialog(this, "Welcome Admin!");
         
         }else if(passWord.equals(getCtmPassWord)){
-            Overdue a = new Overdue();
-            this.hide();
-            a.setVisible(true);
-            JOptionPane.showMessageDialog(this, "Welcome Customer!");
-        }
-          try {
+             try {
                     FileOutputStream fos=new FileOutputStream("LoginUser.txt",true);
                     ObjectOutputStream oos=new ObjectOutputStream(fos);
                     oos.writeObject(new Customer(userName,passWord,getIdentity));
@@ -246,6 +251,13 @@ public class Login extends javax.swing.JFrame {
                 catch (Exception e) {
                     System.out.println(e.toString());
                 } 
+            Overdue a = new Overdue();
+            this.hide();
+            a.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Welcome Customer!");
+        }
+        
+         
             txtUsername.setText("");
             txtPassword.setText("");
             txtUsername.requestFocus();

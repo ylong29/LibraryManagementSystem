@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  * @author lenovo
  */
 public class ComputerInterface extends javax.swing.JFrame {
-    private static final String fileName="D:\\CPT105-Lab\\ManagementSystem\\Computer.txt";
+    private static final String fileName="Computer.txt";
     /**
      * Creates new form ComputerInterface
      */
@@ -240,7 +240,7 @@ public class ComputerInterface extends javax.swing.JFrame {
             }
         }
         try{
-            FileOutputStream output=new FileOutputStream("D:\\CPT105-Lab\\ManagementSystem\\Computer.txt");
+            FileOutputStream output=new FileOutputStream("Computer.txt");
             ObjectOutputStream oop=null;
             for(Computer computer: computerList){
                 oop=new ObjectOutputStream(output);

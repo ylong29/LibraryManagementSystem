@@ -319,7 +319,7 @@ public class Overdue extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        cusItemInterface a = new cusItemInterface();
+        CustomerInterface a = new CustomerInterface();
         a.setVisible(true);
         this.hide();
     }//GEN-LAST:event_jButton4ActionPerformed

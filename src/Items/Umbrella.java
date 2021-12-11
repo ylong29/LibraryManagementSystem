@@ -14,7 +14,7 @@ import java.time.LocalDate;
  * @author lenovo
  */
 public class Umbrella extends Item{
-    public enum Color {RED, YELLOW, GREEN, BLACK,WHITE}
+   
     private String color;
     private String code;
     private Customer owner;
@@ -25,7 +25,7 @@ public class Umbrella extends Item{
         super(idNumber,"Umbrella");
         this.color = color;
         this.code = code;
-         borrowDate = LocalDate.parse("1990-10-01");
+        borrowDate = LocalDate.parse("1990-10-01");
         returnDate = LocalDate.parse("1990-10-01");
         if(!returnDate.equals(LocalDate.parse("1990-10-01"))){
             available = true;
@@ -36,7 +36,7 @@ public class Umbrella extends Item{
         super("Umbrella");
         this.color = color;
         this.code = code;
-         borrowDate = LocalDate.parse("1990-10-01");
+        borrowDate = LocalDate.parse("1990-10-01");
         returnDate = LocalDate.parse("1990-10-01");
         if(!returnDate.equals(LocalDate.parse("1990-10-01"))){
             available = true;
