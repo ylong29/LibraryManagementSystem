@@ -7,10 +7,10 @@ package Events;
 
 //• The library will also stage a number of events, such as film viewings or book readings1
 
-import Items.Item;
-import User.Admin;
+import java.io.File;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 //.
 //Each event takes place at a given time (on a specific date), and is managed by an admin
@@ -23,28 +23,27 @@ import java.time.LocalDate;
  * @author lenovo
  */
 public class Event implements Serializable{
+    public static ArrayList<Event> events;
     private String name;
-    private LocalDate dateOfEvent;
-    private String time;
-    private Admin admin;
-    public Event(String name,String date,String time,Admin admin){
+    private String location;
+    private String hoster;
+    private int attendNumber;
+    private LocalDate time;
+    private ArrayList<String> subscribers;
+
+    public Event( String name,
+            String location,
+            String hoster,
+            int attendNumber,
+            LocalDate time) {
         this.name = name;
+        this.location = location;
+        this.hoster = hoster;
+        this.attendNumber = attendNumber;
         this.time = time;
-        this.admin = admin;
-        this.dateOfEvent = LocalDate.parse(date);
+        this.subscribers = new ArrayList<>();
     }
-   public LocalDate getDate(){
-       return dateOfEvent;
-   }
-   public String getTime(){
-       return time;
-   }
-   public Admin getAdmin(){
-       return admin;
-   }
-   public String getName(){
-       return name;
-   }
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -55,10 +54,81 @@ public class Event implements Serializable{
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        Event other = (Event) obj;
-        return this.name.equals(other.name)&&this.dateOfEvent.equals(other.dateOfEvent) && this.time.equals(other.dateOfEvent) && this.admin.equals(other.admin);
+        return this.toString().equals(((Event) obj).toString());
     }
     public String toString(){
-        return "Name: "+this.name+" Date: "+this.dateOfEvent.toString()+" Time: "+this.time+" Admin: "+this.admin.toString();
+        return "name: "+ this.name +
+                " location: " + this.location +
+                " hoster: " + this.hoster +
+                " attendNumber: "+this.attendNumber +
+                " time: "+this.time.toString();
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocation(){
+        return this.location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getHoster() {
+        return this.hoster;
+    }
+
+    public void setHoster(String hoster) {
+        this.hoster = hoster;
+    }
+
+    public int getAttendNumber() {
+        return this.attendNumber;
+    }
+
+    public void setAttendNumber(int attendNumber) {
+        this.attendNumber = attendNumber;
+    }
+
+    public LocalDate getTime() {
+        return this.time;
+    }
+
+    public void setTime(LocalDate time) {
+        this.time = time;
+    }
+
+    public ArrayList<String> getSubscribers() {
+        return this.subscribers;
+    }
+
+    public void setSubscribers(ArrayList<String> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    public static ArrayList<Event> GetAllEvents() {
+        // Todo: Read from the local file 'Events.txt'
+        events = new ArrayList<>();
+        return events;
+    }
+
+    public static void RefreshAllEvents() {
+        // Todo: Write the events list to the local file 'Events.txt'
+    }
+
+    public static Event GetEvents(String eventName) {
+        for (Event event : Event.GetAllEvents()) {
+            if (event.getName().equals(eventName)) {
+                return event;
+            }
+        }
+
+        return null;
     }
 }

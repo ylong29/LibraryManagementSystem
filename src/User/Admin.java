@@ -5,6 +5,10 @@
  */
 package User;
 
+import Events.Event;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author lenovo
@@ -32,8 +36,25 @@ public class Admin extends User{
         Admin other = (Admin) obj;
         return title.equals(other.title);
     }
+
     public String toString() {
         return "[This is an admin and "+super.toString()+ " Title: "+title+ "]";
     }
-    
+
+    // This list is for all the events
+    public ArrayList<Event> getEvents() {
+        return Event.GetAllEvents();
+    }
+
+    public void addEvent(Event event) {
+        Event.GetAllEvents().add(event);
+        Event.RefreshAllEvents();
+    }
+    public void removeEvent(String eventName) {
+        Event removed = Event.GetEvents(eventName);
+         if (removed != null) {
+             Event.GetAllEvents().remove(removed);
+             Event.RefreshAllEvents();
+         }
+    }
 }

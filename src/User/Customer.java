@@ -5,11 +5,16 @@
  */
 package User;
 
+import Events.Event;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author lenovo
  */
 public class Customer extends User{
+    private ArrayList<Event> events;
     public String identity;
     public Customer(String name,String password,String identity){
         super(name,password);
@@ -34,5 +39,30 @@ public class Customer extends User{
     }
     public String toString() {
         return "[This is a customer and "+super.toString()+ " Identity: "+identity+ "]";
+    }
+
+    // This list is for the events subscribed by this customer
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
+    }
+
+    public void subscribeEvent(String eventName) {
+        Event event = Event.GetEvents(eventName);
+        if (event != null) {
+            event.getSubscribers().add(this.identity);
+            Event.RefreshAllEvents();
+        }
+    }
+
+    public void removeEvent(String eventName) {
+        Event event = Event.GetEvents(eventName);
+        if (event != null && event.getSubscribers().contains(this.identity)) {
+            event.getSubscribers().remove(this.identity);
+            Event.RefreshAllEvents();
+        }
     }
 }
